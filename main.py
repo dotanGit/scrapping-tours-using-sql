@@ -10,10 +10,15 @@ def scrape(url):
     return source
 
 def extract(source):
-    selectorlib.Extractor.from_yaml_file("extract.yaml")
+    extractor = selectorlib.Extractor.from_yaml_file("extract.yaml")
+    value = extractor.extract(source)["tours"]   # tours the name of text inside the extract.yaml file
+    return value
+
 
 if __name__ == "__main__":
-    print(scrape(URL))
+  scraped = scrape(URL)
+  extracted = extract(scraped)
+  print(extracted)
 
 
 
